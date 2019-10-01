@@ -9,7 +9,6 @@ function createHomePage(links) {
   addFormEventListener();
   addNewLinkButtonEventListener();
   addEditLinksButtonEventListener();
-  makeListItemsDraggable();
 }
 
 function addEditLinksButtonEventListener() {
@@ -105,23 +104,5 @@ function fetchFavicon(url) {
     hostname = url.split('/')[0];
   }
   return hostname;
-}
-
-function makeListItemsDraggable() {
-  const links = document.querySelectorAll('.links > li');
-  const linkChildren = document.querySelectorAll('.links > li *');
-  links.forEach(link => link.draggable = "true");
-  linkChildren.forEach(link => link.draggable = "false");
-  setUpDragListener();
-}
-
-function setUpDragListener() {
-  const list = document.querySelector('.links');    
-  list.addEventListener('dragstart', (event) => {
-      const id = (event.target.id == "") ? 
-          event.target.parentElement.id : 
-          event.target.id;
-      event.dataTransfer.setData("text", id);
-  });
-}
+  }
 
