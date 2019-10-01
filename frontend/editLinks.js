@@ -1,21 +1,16 @@
 function enterEditMode() {
-    const list = document.querySelector('.links');
-    const links = document.querySelectorAll('.links > li');
-    const linkChildren = document.querySelectorAll('.links > li *');
-    links.forEach(link => link.draggable = "true");
-    linkChildren.forEach(link => link.draggable = "false");
+    makeExitButton();
+    setUpTrashCan();
+}
 
-    list.addEventListener('dragstart', (event) => {
-        let id;
-        if (event.target.id == "") {
-            id = event.target.parentElement.id;
-            console.log(event.target.parentElement)
-        } else {
-            id = event.target.id;
-        }
-        event.dataTransfer.setData("text", id);
-        console.log(event.target);
-    });
+function makeExitButton() {
+    const button = document.querySelector('#edit-btn');
+    button.innerHTML = `<img src="icons/close-icon.png">Exit Editor`;
+}
+
+function setUpTrashCan() {
+    const trashSection = document.querySelector('.trash');
+    trashSection.style.display = "flex";
 
     const trash = document.querySelector('#trashcan');
     trash.addEventListener('dragover', (event) => {
@@ -35,18 +30,14 @@ function enterEditMode() {
 }
 
 function exitEditMode() {
-
+    const trashSection = document.querySelector('.trash');
+    trashSection.style.display = "none";
+    
+    const button = document.querySelector('#edit-btn');
+    button.innerHTML = `<img src="icons/edit-icon.png">Edit Links`
 }
 
 function removeListItem(id) {
     const listItem = document.getElementById(`${id}`);
     listItem.parentElement.removeChild(listItem);
-}
-
-function drag(event) {
-
-}
-
-function drop(event) {
-    
 }

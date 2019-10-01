@@ -21,7 +21,7 @@ class LinksController < ApplicationController
     render json: @link
   end
 
-  def delete
+  def destroy
     Link.destroy(params[:id])
   end
 end

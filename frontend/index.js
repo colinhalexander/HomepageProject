@@ -8,7 +8,20 @@ function createHomePage(links) {
   createLinks(links);
   addFormEventListener();
   addNewLinkButtonEventListener();
-  enterEditMode();
+  addEditLinksButtonEventListener();
+  makeListItemsDraggable();
+}
+
+function addEditLinksButtonEventListener() {
+  const button = document.querySelector('#edit-btn');
+  const trash = document.querySelector('.trash');
+  button.addEventListener('click', () => {
+    if (trash.style.display === "none") {
+      enterEditMode();
+    } else {
+      exitEditMode();
+    }
+  });
 }
 
 function addNewLinkButtonEventListener() {
@@ -24,12 +37,13 @@ function addFormEventListener() {
   addCloseButton();
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+
     const formData = new FormData(form);
-    console.log(formData);
     const configObject = {
       method: "POST",
       body: formData
     };
+    console.log(configObject);
 
     fetch("http://localhost:3000/links", configObject)
       .then(response => response.json())
@@ -54,8 +68,7 @@ function addNewLink(link) {
 
 function createLinks(links) {
   const list = document.getElementsByClassName("links")[0];
-  filteredLinks = links.filter(link => link.url != null);
-  const listItems = filteredLinks.map(link => createLinkItem(link));
+  const listItems = links.map(link => createLinkItem(link));
   list.append(...listItems)
 }
 
@@ -92,5 +105,23 @@ function fetchFavicon(url) {
     hostname = url.split('/')[0];
   }
   return hostname;
+}
+
+function makeListItemsDraggable() {
+  const links = document.querySelectorAll('.links > li');
+  const linkChildren = document.querySelectorAll('.links > li *');
+  links.forEach(link => link.draggable = "true");
+  linkChildren.forEach(link => link.draggable = "false");
+  setUpDragListener();
+}
+
+function setUpDragListener() {
+  const list = document.querySelector('.links');    
+  list.addEventListener('dragstart', (event) => {
+      const id = (event.target.id == "") ? 
+          event.target.parentElement.id : 
+          event.target.id;
+      event.dataTransfer.setData("text", id);
+  });
 }
 
