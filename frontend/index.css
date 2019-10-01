@@ -1,3 +1,54 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*************************/
+
 body {
   padding: 0% 10% 0% 10%;
 }
@@ -6,21 +57,59 @@ header {
   display: flex;
   justify-content: center;
   font-size: 300%;
+  padding: 10px;
 }
 
-.linkForms {
+main {
+  height: 400px;
+  max-height: 400px;
+  overflow: scroll;
+  padding: 10px;
+}
+
+.btn-container {
   display: flex;
-  flex-direction: column;
-  max-width: 300px;
-  background-color: white;
-  border: solid black;
-  padding: 5px;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+}
+
+.btn-container > button {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  width: max-content;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-container > button:hover {
+  font-weight: 700;
+}
+
+.btn-container > button:focus {
+  outline: none;
+}
+
+.btn-container > button > img {
+  width: 12px;
+  padding-right: 3px;
+}
+
+.trash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trash > img {
+  width: 80px;
 }
 
 .addLink {
   display: none;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-color: hsla(0, 0%, 0%, .5);
   height: 100%;
   width: 100%;
@@ -28,6 +117,63 @@ header {
   top: 0;
   overflow: hidden;
   position: fixed;
+}
+
+#close-btn {
+  position: relative;
+  left: 147px;
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+}
+
+#close-btn > img {
+  max-width: 20px;
+}
+
+#close-btn > img:hover {
+  max-width: 22px;
+}
+
+#close-btn:focus {
+  outline: none;
+}
+
+.linkForms {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  max-height: 200px;
+  background-color: white;
+  border: solid black;
+  padding: 30px;
+  box-shadow: 2px 2px 30px -5px black;
+}
+
+.linkForms > h3 {
+  align-self: center;
+  font-size: 140%;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.linkForms > label {
+  margin-top: 5px
+}
+
+.linkForms > input {
+  margin-bottom: 5px
+}
+
+#submit {
+  align-self: center;
+  margin-top: 15px;
+  padding: 0;
+  width: 100px;
+}
+
+#submit:hover {
+  font-weight: 500;
 }
 
 .links {
@@ -39,10 +185,12 @@ header {
 .links img {
   width: 50px;
   height: 50px;
+  z-index: -1;
 }
 
 .links li {
   display: block;
+  z-index: 100;
 }
 
 .links a {
@@ -53,14 +201,13 @@ header {
   margin: 20px;
   max-width: 80px;
   text-align: center;
+  z-index: -1;
 }
 
-.add-btn {
+footer {
   display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  left: -11%;
-  top: 10%;
-  overflow: hidden;
-  position: fixed;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
 }

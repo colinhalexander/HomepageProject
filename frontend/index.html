@@ -10,26 +10,37 @@
 <body>
   <header>Welcome Home</header>
   <hr>
-  <ul class="links">
+  <main>
+    <div class="btn-container">
+      <button id="edit-btn"><img src="icons/edit-icon.png">Edit Links</button>
+      <button id="add-btn"><img src="icons/add-icon.png">Add New Link</button>
+    </div>
+    <ul class="links">
 
-  </ul>
-  <div class="addLink">
-    <form class="linkForms">
-      <label for="title">Title:</label>
-      <input id="title" name="title">
-      <br>
-      <label for="url">URL:</label>
-      <input id="url" name="url">
-      <br>
-      <label for="icon">Icon URL (optional):</label>
-      <input id="icon" name="icon">
-      <br>
-      <input type="submit" value="Add Link"></submit>
-    </form>
-  </div>
-  <div class="add-btn">
-  <button>Add New Link</button>
-  </div> 
+    </ul>
+    <section class="trash">
+      <img id="trashcan" src="images/trashcan.png">
+    </section>
+    <div class="addLink">
+      <button id="close-btn"><img src="icons/close-icon.png"></button>
+      <form class="linkForms">
+        <h3>Add New Link</h3>
+        <label for="title">Title:</label>
+        <input id="title" name="title">
+        <label for="url">URL:</label>
+        <input id="url" name="url">
+        <label for="icon">Icon URL (optional):</label>
+        <input id="icon" name="icon">
+        <input id="submit" type="submit" value="Add Link"></submit>
+      </form>
+    </div>
+  </main>
+  <hr>
+  <footer>
+    <p>Designed by Danika Butterfield and Colin Alexander</p>
+    <p>Icons by <a href="https://icons8.com/" target="_blank">Icons8.com</a></p>
+  </footer>
+  <script src="editLinks.js"></script>
   <script src="index.js"></script>
 </body>
 </html>
