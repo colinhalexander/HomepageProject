@@ -8,7 +8,7 @@ function createHomePage(links) {
   createLinks(links);
   addFormEventListener();
   addNewLinkButtonEventListener();
-  // enterEditMode();
+  enterEditMode();
 }
 
 function addNewLinkButtonEventListener() {
@@ -62,9 +62,11 @@ function createLinks(links) {
 function createLinkItem(link) {
   const listItem = document.createElement("li");
   listItem.id = link.id;
+
   const item = document.createElement("a");
   item.href = link.url;
   item.target = "_blank";
+
   const image = document.createElement("img");
   if (link.icon == "" || link.icon == null) {
     const faviconURL = fetchFavicon(link.url);
@@ -73,6 +75,7 @@ function createLinkItem(link) {
   else {
     image.src = link.icon
   };
+
   const title = document.createElement("p");
   title.innerText = link.title;
   item.append(image, title);
