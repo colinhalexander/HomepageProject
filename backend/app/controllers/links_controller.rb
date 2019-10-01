@@ -1,23 +1,27 @@
 class LinksController < ApplicationController
   def index
-      @links = Link.all
+    @links = Link.all
 
-      render json: @links
+    render json: @links
   end
 
   def show
-      @link = Link.find(params[:title])
+    @link = Link.find(params[:title])
 
-      render json: @link
+    render json: @link
   end
 
   def create
-      @link = Link.create({
-          title: params[:title],
-          url: params[:url],
-          icon: params[:icon]
-      })
-      
-      render json: @link
+    @link = Link.create({
+        title: params[:title],
+        url: params[:url],
+        icon: params[:icon]
+    })
+    
+    render json: @link
+  end
+
+  def delete
+    Link.destroy(params[:id])
   end
 end
