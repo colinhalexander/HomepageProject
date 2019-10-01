@@ -6,7 +6,14 @@ function enterEditMode() {
     linkChildren.forEach(link => link.draggable = "false");
 
     list.addEventListener('dragstart', (event) => {
-        event.dataTransfer.setData("text", event.target.id);
+        let id;
+        if (event.target.id == "") {
+            id = event.target.parentElement.id;
+            console.log(event.target.parentElement)
+        } else {
+            id = event.target.id;
+        }
+        event.dataTransfer.setData("text", id);
         console.log(event.target);
     });
 
@@ -32,7 +39,7 @@ function exitEditMode() {
 }
 
 function removeListItem(id) {
-    const listItem = document.querySelector(`#${id}`);
+    const listItem = document.getElementById(`${id}`);
     listItem.parentElement.removeChild(listItem);
 }
 
