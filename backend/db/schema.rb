@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_164622) do
+ActiveRecord::Schema.define(version: 2019_10_01_204046) do
+
+  create_table "folders", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "links", force: :cascade do |t|
     t.string "title"
@@ -18,6 +24,9 @@ ActiveRecord::Schema.define(version: 2019_09_30_164622) do
     t.string "icon"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "folder_id"
+    t.index ["folder_id"], name: "index_links_on_folder_id"
   end
 
+  add_foreign_key "links", "folders"
 end

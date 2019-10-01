@@ -5,19 +5,20 @@ class LinksController < ApplicationController
     render json: @links
   end
 
-  def show
-    @link = Link.find(params[:title])
-
-    render json: @link
-  end
-
   def create
     @link = Link.create({
         title: params[:title],
         url: params[:url],
-        icon: params[:icon]
+        icon: params[:icon],
+        folder_id: params[:folder_id]
     })
     
+    render json: @link
+  end
+
+  def update
+    @link = Link.update(params[:id], {folder_id: params[:folder_id]})
+
     render json: @link
   end
 
