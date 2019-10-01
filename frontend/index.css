@@ -96,7 +96,7 @@ main {
 }
 
 .trash {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -190,7 +190,6 @@ main {
 
 .links li {
   display: block;
-  z-index: 100;
 }
 
 .links a {
