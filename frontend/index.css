@@ -54,3 +54,13 @@ header {
   max-width: 80px;
   text-align: center;
 }
+
+.add-btn {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  left: -11%;
+  top: 10%;
+  overflow: hidden;
+  position: fixed;
+}
