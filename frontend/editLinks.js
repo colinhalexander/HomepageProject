@@ -20,7 +20,6 @@ function setUpTrashCan() {
 
     trash.addEventListener('drop', (event) => {
         event.preventDefault();
-        console.log("drop event fired")
 
         const draggedID = event.dataTransfer.getData("text");
         removeListItem(draggedID);
