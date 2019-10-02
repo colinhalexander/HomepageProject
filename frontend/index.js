@@ -8,29 +8,23 @@ function createHomePage(folders) {
   createFoldersList(folders);
   createLinks(getLinks(folders[0]));
   addFolderEventListener(folders);
-  addNewFolderEventListener();
-  addFormEventListener();
+  addNewFolderEventListener(folders);
+  addFolderDropdownToLinkForm(folders)
+  addLinkFormEventListener(folders);
   addNewLinkButtonEventListener();
   addEditLinksButtonEventListener();
 }
 
 function addFolderEventListener(folders) {
   const foldersList = document.querySelector('.folders');
-  const linksList = document.querySelector('.links');
   foldersList.addEventListener('click', (event) => {    
     if (event.target.className === "temp") {
         return;
     }
     
-    linksList.innerHTML = "";
-    
-    const previousFolder = document.querySelector('.open');
-    closeFolder(previousFolder);
+    closePreviousFolder();
 
-    let id = (event.target.id == "") ? 
-          event.target.parentElement.id : 
-          event.target.id;
-    id = id.split("-")[1];
+    const id = getFolderID(event.target);
 
     const folder = folders.find(folder => folder["id"] == parseInt(id));
     const folderItem = (event.target.nodeName === "LI") ?
@@ -39,6 +33,13 @@ function addFolderEventListener(folders) {
     openFolder(folderItem);
     createLinks(getLinks(folder));
   });
+}
+
+function getFolderID(element) {
+  let id = (element.id == "") ? 
+          element.parentElement.id : 
+          element.id;
+  return id.split("-")[1];
 }
 
 function getLinks(folder) {
@@ -57,7 +58,8 @@ function openFolder(folder) {
   folder.classList.toggle("open");
 }
 
-function closeFolder(folder) {
+function closePreviousFolder() {
+  const folder = document.querySelector('.open');
   folder.firstChild.src = "images/folder.png";
   folder.classList.toggle("open");
 }
@@ -94,7 +96,20 @@ function addNewLinkButtonEventListener() {
   })
 }
 
-function addFormEventListener() {
+function addFolderDropdownToLinkForm(folders) {
+  const select = document.querySelector('#folder_id');
+  const options = folders.map(folder => createOption(folder));
+  select.append(...options);
+}
+
+function createOption(folder) {
+  const option = document.createElement('option');
+  option.value = `${folder.id}`
+  option.innerText = `${folder.name}`
+  return option;
+} 
+
+function addLinkFormEventListener(folders) {
   const form = document.querySelector('.linkForms');
   addCloseButton();
   form.addEventListener('submit', (event) => {
@@ -105,14 +120,29 @@ function addFormEventListener() {
       method: "POST",
       body: formData
     };
-    console.log(configObject);
 
     fetch("http://localhost:3000/links", configObject)
       .then(response => response.json())
-      .then(link => addNewLink(link));
+      .then(link => addNewLink(link, folders));
     
     form.parentNode.style.display = "none";
   });
+}
+
+function addNewLink(link, folders) {
+  const linkFolder = folders.find(folder => folder.id === link["folder_id"])
+  
+  if (linkFolder["links"]) {
+    linkFolder["links"].push(link);
+  } else {
+    linkFolder["links"] = [link];
+  }
+
+  const linkFolderItem = document.querySelector(`#folder-${linkFolder.id}`);
+  
+  createLinks(linkFolder.links);
+  closePreviousFolder();
+  openFolder(linkFolderItem);
 }
 
 function addCloseButton() {
@@ -122,16 +152,11 @@ function addCloseButton() {
   });
 }
 
-function addNewLink(link) {
-  const newListItem = createLinkItem(link);
-  const list = document.querySelector('.links');
-  list.appendChild(newListItem);
-}
-
 function createLinks(links) {
   const list = document.getElementsByClassName("links")[0];
+  list.innerHTML = "";
   const listItems = links.map(link => createLinkItem(link));
-  list.append(...listItems)
+  list.append(...listItems);
 }
 
 function createLinkItem(link) {
