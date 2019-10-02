@@ -132,7 +132,7 @@ function addLinkFormEventListener(folders) {
 }
 
 function addNewLink(link, folders) {
-  const linkFolder = folders.find(folder => folder.id === link["folder_id"])
+  const linkFolder = folders.find(folder => folder.id === link["folder_id"]);
   
   if (linkFolder["links"]) {
     linkFolder["links"].push(link);
