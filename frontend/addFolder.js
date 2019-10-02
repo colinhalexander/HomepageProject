@@ -36,5 +36,4 @@ function createFolderAndReplaceForm(folder, folders, li) {
     folderList.removeChild(li);
     folderList.appendChild(folderItem);
     folders.push(folder);
-    addFolderEventListener(folders);
 }
