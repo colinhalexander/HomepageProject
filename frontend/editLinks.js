@@ -6,7 +6,7 @@ function enterEditMode() {
 
 function makeExitButton() {
     const button = document.querySelector('#edit-btn');
-    button.innerHTML = `<img src="icons/close-icon.png">Exit Editor`;
+    button.innerHTML = `<img src="icons/close-icon.svg">Exit Editor`;
 }
 
 function setUpTrashCan() {
