@@ -8,6 +8,7 @@ function createHomePage(folders) {
   createFoldersList(folders);
   createLinks(getLinks(folders[0]));
   addFolderEventListener(folders);
+  addNewFolderEventListener();
   addFormEventListener();
   addNewLinkButtonEventListener();
   addEditLinksButtonEventListener();
