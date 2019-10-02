@@ -56,6 +56,7 @@ html {
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: cover;
+  color: white;
 }
 
 body {
@@ -67,12 +68,14 @@ header {
   justify-content: center;
   font-size: 300%;
   padding: 10px;
+  text-shadow: 2px 2px black;
 }
 
 main {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  background: rgba(0,0,0,.5)
 }
 
 .btn-container {
@@ -195,6 +198,7 @@ main {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  z-index: 1
 }
 
 .links img {
