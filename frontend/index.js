@@ -9,7 +9,7 @@ function createHomePage(folders) {
   createLinks(getLinks(folders[0]));
   addFolderEventListener(folders);
   addNewFolderEventListener(folders);
-  addFolderDropdownToLinkForm(folders)
+  addFolderDropdownToLinkForm(folders);
   addLinkFormEventListener(folders);
   addNewLinkButtonEventListener();
   addEditLinksButtonEventListener();
@@ -120,6 +120,8 @@ function addLinkFormEventListener(folders) {
       method: "POST",
       body: formData
     };
+    
+    form.reset();
 
     fetch("http://localhost:3000/links", configObject)
       .then(response => response.json())
@@ -174,7 +176,7 @@ function createLinkItem(link) {
   }
   else {
     image.src = link.icon
-  };
+  }
 
   const title = document.createElement("p");
   title.innerText = link.title;

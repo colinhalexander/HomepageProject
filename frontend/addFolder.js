@@ -26,7 +26,7 @@ function createNewFolderForm(folders) {
 
         fetch("http://localhost:3000/folders", configObject)
             .then(response => response.json())
-            .then(folder => createFolderAndReplaceForm(folder, folders, li))
+            .then(folder => createFolderAndReplaceForm(folder, folders, li));
     });
 }
 
@@ -36,4 +36,5 @@ function createFolderAndReplaceForm(folder, folders, li) {
     folderList.removeChild(li);
     folderList.appendChild(folderItem);
     folders.push(folder);
+    addFolderDropdownToLinkForm(folders);
 }
