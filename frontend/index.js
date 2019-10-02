@@ -17,7 +17,11 @@ function createHomePage(folders) {
 function addFolderEventListener(folders) {
   const foldersList = document.querySelector('.folders');
   const linksList = document.querySelector('.links');
-  foldersList.addEventListener('click', (event) => {
+  foldersList.addEventListener('click', (event) => {    
+    if (event.target.className === "temp") {
+        return;
+    }
+    
     linksList.innerHTML = "";
     
     const previousFolder = document.querySelector('.open');
@@ -27,6 +31,7 @@ function addFolderEventListener(folders) {
           event.target.parentElement.id : 
           event.target.id;
     id = id.split("-")[1];
+
     const folder = folders.find(folder => folder["id"] == parseInt(id));
     const folderItem = (event.target.nodeName === "LI") ?
                        event.target :
