@@ -49,6 +49,14 @@ table {
 
 /*************************/
 
+html {
+  background: radial-gradient(rgba(128,0,0,1) 0%,rgba(0,0,0,1) 100%);
+  background-attachment: fixed;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 body {
   padding: 0% 10% 0% 10%;
 }
