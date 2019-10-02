@@ -43,7 +43,7 @@ function setUpTrashCan() {
  * - make list items draggabble from the start
  * - make set up folders function
  *  x prevent default on dragover
- *  - get list id from drop event and folder id from target/parent
+ *  x get list id from drop event and folder id from target/parent
  *  - send fetch PUT request to dragged link url with new folder_id, then:
  *      - remove link from previous folder in FOLDERS array
  *      - add link to new folder in FOLDERS array
@@ -51,7 +51,7 @@ function setUpTrashCan() {
  *  
 ************/
 
-function setUpFoldersAsDropzone() {
+function setUpFoldersAsDropzone(folders) {
     const folderList = document.querySelector('.folders');
 
     folderList.addEventListener('dragover', (event) => {
@@ -74,12 +74,16 @@ function setUpFoldersAsDropzone() {
                 method: "PUT",
                 body: {
                     "folder_id": `${folder_id}`
-                })
-            };
+                }
+            });
 
             fetch(`http://localhost:3000/links/${draggedID}`, request)
                 .then(response => response.json())
-                .then();
+                .then(link => updateFoldersObjectAndMoveLink(link, folders));
         }
     });
+}
+
+function updateFoldersObjectAndMoveLink(link, folders) {
+
 }

@@ -17,7 +17,8 @@ class LinksController < ApplicationController
   end
 
   def update
-    @link = Link.update(params[:id], {folder_id: params[:folder_id]})
+    @link = Link.find(params[:id])
+    @link.update(folder_id: params[:folder_id])
 
     render json: @link
   end
