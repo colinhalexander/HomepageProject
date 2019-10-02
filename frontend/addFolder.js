@@ -7,10 +7,11 @@ function addNewFolderEventListener() {
 
 function createNewFolderForm() {
     const li = document.createElement('li');
+    li.className = "temp";
     const newFolderFormHTML = `
-    <img src="images/folder.png">
-    <form class="folder-form">
-        <input id="name" name="name" placeholder="New Folder"></input>
+    <img class="temp" src="images/folder.png">
+    <form class="folder-form temp">
+        <input class="temp" id="name" name="name" placeholder="New Folder" autofocus></input>
     </form>
     `;
     li.innerHTML = newFolderFormHTML;
@@ -31,6 +32,8 @@ function createNewFolderForm() {
 }
 
 function createFolderAndReplaceForm(folder, li) {
+    const folderList = document.querySelector('.folders');
     const folderItem = createFolder(folder);
-    li.innerHTML = folderItem.innerHTML;
+    folderList.removeChild(li);
+    folderList.appendChild(folderItem);
 }
