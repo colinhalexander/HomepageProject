@@ -118,7 +118,6 @@ main {
 }
 
 .trash {
-  display: none;
   align-items: center;
   justify-content: center;
   align-self: flex-end;
