@@ -1,3 +1,10 @@
+function addNewFolderEventListener() {
+    const button = document.querySelector('.add-folder');
+    button.addEventListener('click', () => {
+        createNewFolderForm();
+    });
+}
+
 function createNewFolderForm() {
     const li = document.createElement('li');
     const newFolderFormHTML = `
@@ -20,7 +27,7 @@ function createNewFolderForm() {
         fetch("http://localhost:3000/folders", configObject)
             .then(response => response.json())
             .then(folder => createFolderAndReplaceForm(folder, li))
-    }); 
+    });
 }
 
 function createFolderAndReplaceForm(folder, li) {
