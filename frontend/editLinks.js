@@ -35,7 +35,7 @@ function exitEditMode() {
     trashSection.style.display = "none";
     
     const button = document.querySelector('#edit-btn');
-    button.innerHTML = `<img src="icons/edit-icon.png">Edit Links`
+    button.innerHTML = `<img src="icons/edit-icon.svg">Edit Links`
 }
 
 function removeListItem(id) {
