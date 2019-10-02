@@ -18,11 +18,19 @@ function addFolderEventListener(folders) {
   const linksList = document.querySelector('.links');
   foldersList.addEventListener('click', (event) => {
     linksList.innerHTML = "";
-    const id = (event.target.id == "") ? 
+    
+    const previousFolder = document.querySelector('.open');
+    closeFolder(previousFolder);
+
+    let id = (event.target.id == "") ? 
           event.target.parentElement.id : 
           event.target.id;
-    console.log(id);
+    id = id.split("-")[1];
     const folder = folders.find(folder => folder["id"] == parseInt(id));
+    const folderItem = (event.target.nodeName === "LI") ?
+                       event.target :
+                       event.target.parentNode;
+    openFolder(folderItem);
     createLinks(getLinks(folder));
   });
 }
@@ -34,12 +42,23 @@ function getLinks(folder) {
 function createFoldersList(folders) {
   const list = document.querySelector('.folders');
   const listItems = folders.map(folder => createFolder(folder));
+  openFolder(listItems[0]);
   list.append(...listItems);
+}
+
+function openFolder(folder) {
+  folder.firstChild.src = "images/folder-open.png";
+  folder.classList.toggle("open");
+}
+
+function closeFolder(folder) {
+  folder.firstChild.src = "images/folder.png";
+  folder.classList.toggle("open");
 }
 
 function createFolder(folder) {
   const li = document.createElement('li');
-  li.id = folder.id;
+  li.id = `folder-${folder.id}`;
   const img = document.createElement('img');
   img.src = "images/folder.png";
   const p = document.createElement('p');

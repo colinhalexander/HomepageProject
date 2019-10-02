@@ -60,6 +60,12 @@ header {
   padding: 10px;
 }
 
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
 .btn-container {
   display: flex;
   justify-content: space-between;
@@ -86,11 +92,6 @@ header {
 .btn-container > button > img {
   width: 12px;
   padding-right: 3px;
-}
-
-.link-box {
-  display: flex;
-  flex-flow: column nowrap;
 }
 
 .trash {
@@ -175,6 +176,12 @@ header {
   font-weight: 500;
 }
 
+.link-box {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0 100px 0 100px;
+}
+
 .links {
   display: flex;
   flex-flow: row wrap;
@@ -206,6 +213,12 @@ header {
   display: flex;
   align-items: center;
   flex-flow: row nowrap;
+  border-radius: 10px;
+  padding: 0 5px 0 5px;
+  margin: 0 100px 0 100px;
+  background-image: linear-gradient(rgba(0,0,0, 0.05), rgba(15, 0, 151, 0.123));
+  box-shadow: 0 0 10px 5px rgba(0,0,0, 0.05);
+  font-size: 15px;
 }
 
 .folders {
