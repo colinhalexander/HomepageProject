@@ -1,19 +1,19 @@
-function addNewFolderEventListener() {
+function addNewFolderEventListener(folders) {
     const button = document.querySelector('.add-folder');
     button.addEventListener('click', () => {
-        createNewFolderForm();
+        createNewFolderForm(folders);
     });
 }
 
-function createNewFolderForm() {
+function createNewFolderForm(folders) {
     const li = document.createElement('li');
-    const newFolderFormHTML = `
-    <img src="images/folder.png">
-    <form class="folder-form">
-        <input id="name" name="name" placeholder="New Folder"></input>
+    li.className = "temp";
+    li.innerHTML = `
+    <img class="temp" src="images/folder.png">
+    <form class="folder-form temp">
+        <input class="temp" id="name" name="name" placeholder="New Folder" autofocus></input>
     </form>
     `;
-    li.innerHTML = newFolderFormHTML;
 
     const folderList = document.querySelector('.folders');
     folderList.appendChild(li);
@@ -26,11 +26,14 @@ function createNewFolderForm() {
 
         fetch("http://localhost:3000/folders", configObject)
             .then(response => response.json())
-            .then(folder => createFolderAndReplaceForm(folder, li))
+            .then(folder => createFolderAndReplaceForm(folder, folders, li))
     });
 }
 
-function createFolderAndReplaceForm(folder, li) {
+function createFolderAndReplaceForm(folder, folders, li) {
+    const folderList = document.querySelector('.folders');
     const folderItem = createFolder(folder);
-    li.innerHTML = folderItem.innerHTML;
+    folderList.removeChild(li);
+    folderList.appendChild(folderItem);
+    folders.push(folder);
 }
