@@ -60,13 +60,6 @@ header {
   padding: 10px;
 }
 
-main {
-  height: 400px;
-  max-height: 400px;
-  overflow: scroll;
-  padding: 10px;
-}
-
 .btn-container {
   display: flex;
   justify-content: space-between;
@@ -95,10 +88,16 @@ main {
   padding-right: 3px;
 }
 
+.link-box {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
 .trash {
   display: none;
   align-items: center;
   justify-content: center;
+  align-self: flex-end;
 }
 
 .trash > img {
@@ -203,15 +202,58 @@ main {
   z-index: -1;
 }
 
-.add-fld {
-  padding: 0px;
+.folder-bar {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+}
+
+.folders {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.folders > * {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  padding: 5px;
+  margin: 5px;
+}
+
+.folders > li > img {
+  width: 50px;
+  height: 50px;
+}
+
+.folders > *:hover {
+  transform: scale(1.1);
+}
+
+.add-folder {
+  padding: 5px;
   background-color: transparent;
   border: none;
 }
 
-.add-fld img {
-  width: 50px;
-  height: 50px;
+.add-folder:focus {
+  outline: none;
+}
+
+.add-folder:hover {
+  transform: scale(1.1);
+}
+
+.add-folder img {
+  width: 30px;
+  padding: 5px;
+  padding-bottom: 0px;
+  margin-left: 2px;
+}
+
+.add-folder > p {
+  font-size: 10px;
 }
 
 footer {

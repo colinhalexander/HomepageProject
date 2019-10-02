@@ -1,21 +1,59 @@
 window.addEventListener("DOMContentLoaded", () => {
-  fetch("http://localhost:3000/links")
+  fetch("http://localhost:3000/folders")
     .then(response => response.json())
-    .then(links => createHomePage(links))
+    .then(folders => createHomePage(folders))
 });
 
-function createHomePage(links) {
-  createLinks(links);
+function createHomePage(folders) {
+  createFoldersList(folders);
+  createLinks(getLinks(folders[0]));
+  addFolderEventListener(folders);
   addFormEventListener();
   addNewLinkButtonEventListener();
   addEditLinksButtonEventListener();
+}
+
+function addFolderEventListener(folders) {
+  const foldersList = document.querySelector('.folders');
+  const linksList = document.querySelector('.links');
+  foldersList.addEventListener('click', (event) => {
+    linksList.innerHTML = "";
+    const id = (event.target.id == "") ? 
+          event.target.parentElement.id : 
+          event.target.id;
+    console.log(id);
+    const folder = folders.find(folder => folder["id"] == parseInt(id));
+    createLinks(getLinks(folder));
+  });
+}
+
+function getLinks(folder) {
+  return folder["links"];
+}
+
+function createFoldersList(folders) {
+  const list = document.querySelector('.folders');
+  const listItems = folders.map(folder => createFolder(folder));
+  list.append(...listItems);
+}
+
+function createFolder(folder) {
+  const li = document.createElement('li');
+  li.id = folder.id;
+  const img = document.createElement('img');
+  img.src = "images/folder.png";
+  const p = document.createElement('p');
+  p.innerText = folder.name;
+
+  li.append(img, p);
+  return li;
 }
 
 function addEditLinksButtonEventListener() {
   const button = document.querySelector('#edit-btn');
   const trash = document.querySelector('.trash');
   button.addEventListener('click', () => {
-    if (trash.style.display === "none") {
+    if (trash.style.display == "none") {
       enterEditMode();
     } else {
       exitEditMode();
