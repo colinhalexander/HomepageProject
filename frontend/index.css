@@ -56,6 +56,7 @@ html {
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: cover;
+  color: white;
 }
 
 body {
@@ -73,6 +74,7 @@ main {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  background: rgba(0,0,0,.5);
 }
 
 .btn-container {
@@ -195,6 +197,7 @@ main {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  z-index: 1;
 }
 
 .links img {
