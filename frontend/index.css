@@ -57,10 +57,20 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
+  height: 100%
 }
 
 body {
   padding: 0% 10% 0% 10%;
+  min-height: 100%;
+}
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
 }
 
 header {
@@ -74,8 +84,9 @@ header {
 main {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
   background: rgba(0,0,0,.5);
+  height: 600px;
+  max-height: 600px;
 }
 
 .btn-container {
