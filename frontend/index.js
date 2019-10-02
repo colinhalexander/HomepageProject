@@ -8,7 +8,7 @@ function createHomePage(folders) {
   createFoldersList(folders);
   createLinks(getLinks(folders[0]));
   addFolderEventListener(folders);
-  addNewFolderEventListener();
+  addNewFolderEventListener(folders);
   addFormEventListener();
   addNewLinkButtonEventListener();
   addEditLinksButtonEventListener();
@@ -23,14 +23,9 @@ function addFolderEventListener(folders) {
     }
     
     linksList.innerHTML = "";
-    
-    const previousFolder = document.querySelector('.open');
-    closeFolder(previousFolder);
+    closePreviousFolder();
 
-    let id = (event.target.id == "") ? 
-          event.target.parentElement.id : 
-          event.target.id;
-    id = id.split("-")[1];
+    const id = getFolderID(event.target);
 
     const folder = folders.find(folder => folder["id"] == parseInt(id));
     const folderItem = (event.target.nodeName === "LI") ?
@@ -39,6 +34,13 @@ function addFolderEventListener(folders) {
     openFolder(folderItem);
     createLinks(getLinks(folder));
   });
+}
+
+function getFolderID(element) {
+  let id = (element.id == "") ? 
+          element.parentElement.id : 
+          element.id;
+  return id.split("-")[1];
 }
 
 function getLinks(folder) {
@@ -57,7 +59,8 @@ function openFolder(folder) {
   folder.classList.toggle("open");
 }
 
-function closeFolder(folder) {
+function closePreviousFolder() {
+  const folder = document.querySelector('.open');
   folder.firstChild.src = "images/folder.png";
   folder.classList.toggle("open");
 }
