@@ -49,17 +49,6 @@ table {
 
 /*************************/
 
-/* html {
-  background: radial-gradient(rgba(128,0,0,1) 0%,rgba(0,0,0,1) 100%);
-  background-image: url("https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg");
-  background-attachment: fixed;
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;
-  color: white;
-} */
-
 body {
   padding: 0% 10% 0% 10%;
   min-height: 100%;
@@ -195,7 +184,6 @@ main {
 .link-box {
   display: flex;
   flex-flow: column nowrap;
-  /* background: rgba(0, 0, 0, 0.3); */
   height: 400px;
   border-radius: 5px;
   max-height: 400px;
@@ -206,6 +194,7 @@ main {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  height: 100%;
   z-index: 1;
 }
 
