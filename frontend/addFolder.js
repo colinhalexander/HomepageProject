@@ -17,12 +17,12 @@ function removeNewFolderForm() {
 }
 
 function changeCancelButtonToAdd(button) {
-    button.classList.toggle("cancel")
+    button.classList.toggle("cancel");
 
     const img = document.querySelector(".add-folder > img");
     img.style.transform = "";
 
-    const textBox = document.querySelector(".add-folder > p")
+    const textBox = document.querySelector(".add-folder > p");
     textBox.innerText = "Add Folder";
 }
 
@@ -69,4 +69,7 @@ function createFolderAndReplaceForm(folder, folders, li) {
     folderList.appendChild(folderItem);
     folders.push(folder);
     addFolderDropdownToLinkForm(folders);
+
+    const button = document.querySelector('.add-folder');
+    changeCancelButtonToAdd(button);
 }

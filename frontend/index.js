@@ -7,7 +7,9 @@ window.addEventListener("DOMContentLoaded", () => {
 function createHomePage(folders) {
   createFoldersList(folders);
   createLinks(getLinks(folders[0]));
+  makeListItemsDraggable();
   addFolderEventListener(folders);
+  setUpFoldersAsDropzone(folders);
   addNewFolderEventListener(folders);
   addFolderDropdownToLinkForm(folders);
   addLinkFormEventListener(folders);
@@ -120,12 +122,13 @@ function addLinkFormEventListener(folders) {
       method: "POST",
       body: formData
     };
+    console.log(configObject.body);
     
     form.reset();
 
     fetch("http://localhost:3000/links", configObject)
       .then(response => response.json())
-      .then(link => addNewLink(link, folders));
+      .then(link => addLinkAndSwitchFolders(link, folders));
     
     form.parentNode.style.display = "none";
   });
@@ -133,18 +136,26 @@ function addLinkFormEventListener(folders) {
 
 function addNewLink(link, folders) {
   const linkFolder = folders.find(folder => folder.id === link["folder_id"]);
-  
+
   if (linkFolder["links"]) {
     linkFolder["links"].push(link);
   } else {
     linkFolder["links"] = [link];
   }
+}
 
-  const linkFolderItem = document.querySelector(`#folder-${linkFolder.id}`);
+function switchFolders(targetFolder) {
+  const targetFolderItem = document.querySelector(`#folder-${targetFolder.id}`);
   
-  createLinks(linkFolder.links);
+  createLinks(targetFolder.links);
   closePreviousFolder();
-  openFolder(linkFolderItem);
+  openFolder(targetFolderItem);
+}
+
+function addLinkAndSwitchFolders(link, folders) {
+  addNewLink(link, folders);
+  const linkFolder = folders.find(folder => folder.id === link["folder_id"]);
+  switchFolders(linkFolder);
 }
 
 function addCloseButton() {
@@ -155,10 +166,11 @@ function addCloseButton() {
 }
 
 function createLinks(links) {
-  const list = document.getElementsByClassName("links")[0];
+  const list = document.querySelector(".links");
   list.innerHTML = "";
   const listItems = links.map(link => createLinkItem(link));
   list.append(...listItems);
+  makeListItemsDraggable();
 }
 
 function createLinkItem(link) {
@@ -196,3 +208,20 @@ function fetchFavicon(url) {
   return hostname;
   }
 
+  function makeListItemsDraggable() {
+    const links = document.querySelectorAll('.links > li');
+    const linkChildren = document.querySelectorAll('.links > li *');
+    links.forEach(link => link.draggable = "true");
+    linkChildren.forEach(link => link.draggable = "false");
+    setUpDragListener();
+  }
+  
+  function setUpDragListener() {
+    const list = document.querySelector('.links');    
+    list.addEventListener('dragstart', (event) => {
+        const id = (event.target.id == "") ? 
+            event.target.parentElement.id : 
+            event.target.id;
+        event.dataTransfer.setData("text", id);
+    });
+  }

@@ -41,21 +41,3 @@ function removeListItem(id) {
     const listItem = document.getElementById(`${id}`);
     listItem.parentElement.removeChild(listItem);
 }
-
-function makeListItemsDraggable() {
-  const links = document.querySelectorAll('.links > li');
-  const linkChildren = document.querySelectorAll('.links > li *');
-  links.forEach(link => link.draggable = "true");
-  linkChildren.forEach(link => link.draggable = "false");
-  setUpDragListener();
-}
-
-function setUpDragListener() {
-  const list = document.querySelector('.links');    
-  list.addEventListener('dragstart', (event) => {
-      const id = (event.target.id == "") ? 
-          event.target.parentElement.id : 
-          event.target.id;
-      event.dataTransfer.setData("text", id);
-  });
-}
