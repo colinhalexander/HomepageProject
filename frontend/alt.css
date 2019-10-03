@@ -49,7 +49,7 @@ table {
 
 /*************************/
 
-html {
+/* html {
   background: radial-gradient(rgba(128,0,0,1) 0%,rgba(0,0,0,1) 100%);
   background-image: url("https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg");
   background-attachment: fixed;
@@ -58,7 +58,7 @@ html {
   background-size: cover;
   color: white;
   height: 100%
-}
+} */
 
 body {
   padding: 0% 10% 0% 10%;
@@ -84,13 +84,15 @@ header {
 main {
   display: flex;
   flex-flow: column nowrap;
+  background: rgba(0,0,0,.5);
+  height: 600px;
+  max-height: 600px;
 }
 
 .btn-container {
   display: flex;
   justify-content: space-between;
   flex-flow: row nowrap;
-  padding-bottom: 8px;
 }
 
 .btn-container > button {
@@ -99,12 +101,11 @@ main {
   flex-flow: row nowrap;
   width: max-content;
   border: none;
-  border-radius: 3px;
   font-weight: 600;
 }
 
 .btn-container > button:hover {
-  transform: scale(1.05);
+  font-weight: 700;
 }
 
 .btn-container > button:focus {
@@ -138,7 +139,6 @@ main {
   top: 0;
   overflow: hidden;
   position: fixed;
-  z-index: 2;
 }
 
 #close-btn {
@@ -170,7 +170,6 @@ main {
   border: solid black;
   padding: 30px;
   box-shadow: 2px 2px 30px -5px black;
-  color: black;
 }
 
 .linkForms > h3 {
@@ -202,11 +201,7 @@ main {
 .link-box {
   display: flex;
   flex-flow: column nowrap;
-  background: rgba(0, 0, 0, 0.3);
-  height: 400px;
-  border-radius: 5px;
-  max-height: 400px;
-  overflow: auto;
+  margin: 0 100px 0 100px;
 }
 
 .links {
@@ -243,8 +238,8 @@ main {
   flex-flow: row nowrap;
   border-radius: 10px;
   padding: 0 5px 0 5px;
-  margin: 10px 100px 0 100px;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.205), rgba(76, 70, 136, 0.247));
+  margin: 0 100px 0 100px;
+  background-image: linear-gradient(rgba(0,0,0, 0.05), rgba(15, 0, 151, 0.123));
   box-shadow: 0 0 10px 5px rgba(0,0,0, 0.05);
   font-size: 15px;
 }
@@ -295,7 +290,6 @@ main {
 
 .add-folder > p {
   font-size: 10px;
-  color: white;
 }
 
 footer {
@@ -304,5 +298,4 @@ footer {
   align-items: center;
   flex-direction: column;
   padding: 10px;
-  padding-bottom: 20px;
 }
