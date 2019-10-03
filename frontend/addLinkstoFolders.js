@@ -85,5 +85,5 @@ function setUpFoldersAsDropzone(folders) {
 }
 
 function updateFoldersObjectAndMoveLink(link, folders) {
-
+    
 }
