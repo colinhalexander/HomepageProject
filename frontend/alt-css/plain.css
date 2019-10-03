@@ -158,7 +158,7 @@ main {
   display: flex;
   flex-direction: column;
   width: 200px;
-  max-height: 200px;
+  height: max-content;
   background-color: white;
   border: solid black;
   padding: 30px;
