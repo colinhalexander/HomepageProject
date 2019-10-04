@@ -1,6 +1,6 @@
-function enterEditMode() {
+function enterEditMode(folders) {
     makeExitButton();
-    setUpTrashCan();
+    setUpTrashCan(folders);
     makeListItemsDraggable();
 }
 
@@ -9,7 +9,7 @@ function makeExitButton() {
     button.innerHTML = `<img src="icons/close-icon.svg">Exit Editor`;
 }
 
-function setUpTrashCan() {
+function setUpTrashCan(folders) {
     const trashSection = document.querySelector('.trash');
     trashSection.style.display = "flex";
 
@@ -23,6 +23,7 @@ function setUpTrashCan() {
 
         const draggedID = event.dataTransfer.getData("text");
         removeListItem(draggedID);
+        removeLinkFromOldFolder(parseInt(draggedID), folders);
 
         const request = {method: "DELETE"};
         fetch(`http://localhost:3000/links/${draggedID}`, request);

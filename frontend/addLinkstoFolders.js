@@ -46,12 +46,12 @@ function setUpFoldersAsDropzone(folders) {
 
 function moveLinkToNewFolder(link, folders) {
     addNewLink(link, folders);
-    removeLinkFromOldFolder(link, folders);
+    removeLinkFromOldFolder(link.id, folders);
     removeListItem(link.id);
 }
 
-function removeLinkFromOldFolder(link, folders) {
+function removeLinkFromOldFolder(linkID, folders) {
     const oldFolderID = document.querySelector('.open').id.split("-")[1];
     const oldFolder = folders.find(folder => folder.id === parseInt(oldFolderID));
-    oldFolder.links = oldFolder.links.filter(folderLink => folderLink.id !== link.id);
+    oldFolder.links = oldFolder.links.filter(folderLink => folderLink.id !== linkID);
 }

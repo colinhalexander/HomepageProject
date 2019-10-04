@@ -14,7 +14,8 @@ function createHomePage(folders) {
   addFolderDropdownToLinkForm(folders);
   addLinkFormEventListener(folders);
   addNewLinkButtonEventListener();
-  addEditLinksButtonEventListener();
+  addEditLinksButtonEventListener(folders);
+  createThemesMenu();
 }
 
 function addFolderEventListener(folders) {
@@ -78,12 +79,12 @@ function createFolder(folder) {
   return li;
 }
 
-function addEditLinksButtonEventListener() {
+function addEditLinksButtonEventListener(folders) {
   const button = document.querySelector('#edit-btn');
   const trash = document.querySelector('.trash');
   button.addEventListener('click', () => {
     if (trash.style.display == "none") {
-      enterEditMode();
+      enterEditMode(folders);
     } else {
       exitEditMode();
     }
@@ -122,7 +123,6 @@ function addLinkFormEventListener(folders) {
       method: "POST",
       body: formData
     };
-    console.log(configObject.body);
     
     form.reset();
 

@@ -189,9 +189,9 @@ main {
 .link-box {
   display: flex;
   flex-flow: column;
-  height: 400px;
+  height: 300px;
   border-radius: 5px;
-  max-height: 400px;
+  max-height: 300px;
   overflow: auto;
 }
 

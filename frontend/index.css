@@ -49,28 +49,10 @@ table {
 
 /*************************/
 
-html {
-  background: radial-gradient(rgba(128,0,0,1) 0%,rgba(0,0,0,1) 100%);
-  background-image: url("https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg");
-  background-attachment: fixed;
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
-  height: 100%
-}
-
 body {
   padding: 0% 10% 0% 10%;
   min-height: 100%;
-}
-
-a:link {
-  color: white;
-}
-
-a:visited {
-  color: white;
+  color: black;
 }
 
 header {
@@ -78,12 +60,12 @@ header {
   justify-content: center;
   font-size: 300%;
   padding: 10px;
-  text-shadow: 2px 2px black;
 }
 
 main {
   display: flex;
   flex-flow: column nowrap;
+  margin: 0px 10px;
 }
 
 .btn-container {
@@ -120,7 +102,6 @@ main {
   align-items: center;
   justify-content: center;
   align-self: flex-end;
-  justify-self: flex-end;
 }
 
 .trash > img {
@@ -165,7 +146,7 @@ main {
 .linkForms {
   display: flex;
   flex-direction: column;
-  width: 220px;
+  width: 200px;
   height: max-content;
   background-color: white;
   border: solid black;
@@ -203,10 +184,9 @@ main {
 .link-box {
   display: flex;
   flex-flow: column nowrap;
-  background: rgba(0, 0, 0, 0.3);
-  height: 400px;
+  height: 300px;
   border-radius: 5px;
-  max-height: 400px;
+  max-height: 300px;
   overflow: auto;
 }
 
@@ -246,7 +226,7 @@ main {
   border-radius: 10px;
   padding: 0 5px 0 5px;
   margin: 10px 100px 0 100px;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.205), rgba(76, 70, 136, 0.247));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.205), rgba(70, 65, 128, 0.137));
   box-shadow: 0 0 10px 5px rgba(0,0,0, 0.05);
   font-size: 15px;
 }
@@ -307,4 +287,8 @@ footer {
   flex-direction: column;
   padding: 10px;
   padding-bottom: 20px;
+}
+
+.theme {
+  margin-top: 10px;
 }

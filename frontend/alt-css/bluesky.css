@@ -56,8 +56,8 @@ html {
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: white;
-  height: 100%
+  color: black;
+  height: 100%;
 }
 
 body {
@@ -66,11 +66,11 @@ body {
 }
 
 a:link {
-  color: white;
+  color: black;
 }
 
 a:visited {
-  color: white;
+  color: black;
 }
 
 header {
@@ -78,7 +78,6 @@ header {
   justify-content: center;
   font-size: 300%;
   padding: 10px;
-  text-shadow: 2px 2px black;
 }
 
 main {
@@ -204,9 +203,10 @@ main {
   display: flex;
   flex-flow: column nowrap;
   background: rgba(6, 29, 70, 0.1);
-  height: 400px;
+  height: 300px;
+  max-height: 300px;
+  margin: 0px 10px;
   border-radius: 5px;
-  max-height: 400px;
   overflow: auto;
 }
 
@@ -297,7 +297,7 @@ main {
 
 .add-folder > p {
   font-size: 10px;
-  color: white;
+  color: black;
 }
 
 footer {
