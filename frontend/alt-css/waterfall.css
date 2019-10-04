@@ -1,0 +1,310 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*************************/
+
+html {
+  background: radial-gradient(rgba(128,0,0,1) 0%,rgba(0,0,0,1) 100%);
+  background-image: url("https://d5vf6134d8ffdnfp1qv4rv3l-wpengine.netdna-ssl.com/wp-content/uploads/05-igazu-falls-cinemagraph.gif");
+  background-attachment: fixed;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  height: 100%;
+}
+
+body {
+  padding: 0% 10% 0% 10%;
+  min-height: 100%;
+}
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  font-size: 300%;
+  padding: 10px;
+  text-shadow: 2px 2px black;
+}
+
+main {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  padding-bottom: 8px;
+}
+
+.btn-container > button {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  width: max-content;
+  border: none;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.btn-container > button:hover {
+  transform: scale(1.05);
+}
+
+.btn-container > button:focus {
+  outline: none;
+}
+
+.btn-container > button > img {
+  width: 12px;
+  padding-right: 3px;
+}
+
+.trash {
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  justify-self: flex-end;
+}
+
+.trash > img {
+  width: 80px;
+}
+
+.addLink {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: hsla(0, 0%, 0%, .5);
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  position: fixed;
+  z-index: 2;
+}
+
+#close-btn {
+  position: relative;
+  left: 147px;
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+}
+
+#close-btn > img {
+  max-width: 20px;
+}
+
+#close-btn > img:hover {
+  max-width: 22px;
+}
+
+#close-btn:focus {
+  outline: none;
+}
+
+.linkForms {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  height: max-content;
+  background-color: white;
+  border: solid black;
+  padding: 30px;
+  box-shadow: 2px 2px 30px -5px black;
+  color: black;
+}
+
+.linkForms > h3 {
+  align-self: center;
+  font-size: 140%;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.linkForms > label {
+  margin-top: 5px
+}
+
+.linkForms > input {
+  margin-bottom: 5px
+}
+
+#submit {
+  align-self: center;
+  margin-top: 15px;
+  padding: 0;
+  width: 100px;
+}
+
+#submit:hover {
+  font-weight: 500;
+}
+
+.link-box {
+  display: flex;
+  flex-flow: column nowrap;
+  background: rgba(48, 50, 83, 0.2);
+  height: 300px;
+  border-radius: 10px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.links {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  height: 100%;
+  z-index: 1;
+}
+
+.links img {
+  width: 50px;
+  height: 50px;
+  z-index: -1;
+}
+
+.links li {
+  display: block;
+}
+
+.links a {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  max-width: 80px;
+  text-align: center;
+  z-index: -1;
+}
+
+.folder-bar {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  border-radius: 10px;
+  padding: 0 5px 0 5px;
+  margin: 10px 100px 0 100px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.205), rgba(68, 65, 100, 0.247));
+  box-shadow: 0 0 10px 5px rgba(0,0,0, 0.05);
+  font-size: 15px;
+}
+
+.folders {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.folders > * {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  padding: 5px;
+  margin: 5px;
+}
+
+.folders > li > img {
+  width: 50px;
+  height: 50px;
+}
+
+.folders > *:hover {
+  transform: scale(1.1);
+}
+
+.add-folder {
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+}
+
+.add-folder:focus {
+  outline: none;
+}
+
+.add-folder:hover {
+  transform: scale(1.1);
+}
+
+.add-folder img {
+  width: 30px;
+  padding: 5px;
+  padding-bottom: 0px;
+  margin-left: 2px;
+}
+
+.add-folder > p {
+  font-size: 10px;
+  color: white;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  padding-bottom: 20px;
+}
