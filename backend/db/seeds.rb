@@ -11,4 +11,7 @@ Folder.destroy_all
 
 folder1 = Folder.create({name: "Home"})
 
-link1 = Link.create({title: "Facebook", url: "http://www.facebook.com", folder: folder1})
+Link.create({title: "Facebook", url: "http://www.facebook.com", folder: folder1})
+Link.create({title: "Google", url: "http://www.google.com", folder: folder1})
+Link.create({title: "Twitter", url: "http://www.twitter.com", folder: folder1})
+Link.create({title: "Instagram", url: "http://www.instagram.com", folder: folder1})

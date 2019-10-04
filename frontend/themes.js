@@ -3,7 +3,7 @@ function createThemesMenu() {
         ["Blue Sky", "alt-css/bluesky.css"], 
         ["Dark Mode", "alt-css/darkmode.css"], 
         ["Mountain Lake", "alt-css/mountainlake.css"], 
-        ["Zen Garden", "alt-css/zengarden.css"]
+        ["Zen Garden", "alt-css/zengarden.css"],
     ];
 
     const menu = document.querySelector('#theme-menu');
@@ -22,6 +22,8 @@ function themeToOption(theme) {
 function addThemeMenuEventListener() {
     const menu = document.querySelector('#theme-menu');
     const link = document.querySelector('link');
+    const body = document.querySelector('body');
+
     menu.addEventListener('change', (event) => {
         const file = event.target.value;
         link.href = file;
